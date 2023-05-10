@@ -5,28 +5,36 @@ declare var window: any;
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css']
+  
+styles: [
+    'table { min-width: 600px }',
+  ]
 })
 export class HomeComponent {
-  allFruits: Fruits[] = [];
+  displayedColumns = ['id', 'name', 'price', 'quantity', 'category', 'actions'];
+  selectedFruits!: Fruits;
+  feedback: any = {};
   deleteModal: any;
   idTodelete: number = 0;
+  allFruits : Fruits[] = [];
  
   constructor(private fruitService: FruitsService) {}
  
   ngOnInit(): void {
-    this.deleteModal = new window.bootstrap.Modal(
-      document.getElementById('deleteModal')
-    );
-    this.get();
+
+    this.getAllFruits();
+    
 
   }
   
  
-  get() {
-    this.fruitService.get().subscribe((data) => {
-      this.allFruits = data;
+  getAllFruits(){
+
+    this.fruitService.get().subscribe((data:Fruits[]) => {
+      this.allFruits= data;
+      console.log("allFruits : ", this.allFruits);
     });
+
   }
  
   openDeleteModal(id: number) {
@@ -34,14 +42,25 @@ export class HomeComponent {
     this.deleteModal.show();
   }
  
-  delete() {
-    this.fruitService.delete(this.idTodelete).subscribe({
-      next: (data) => {
-        this.allFruits = this.allFruits.filter(_ => _.id != this.idTodelete)
-        this.deleteModal.hide();
-      },
-    });
+  select(selected: Fruits): void {
+    this.selectedFruits = selected;
+  }
+
+  delete(fruits: Fruits): void {
+    if (confirm('Are you sure?')) {
+      this.fruitService.delete(fruits.id).subscribe(() => {
+          this.feedback = {type: 'success', message: 'Delete was successful!'};
+          setTimeout(() => {
+         
+          }, 1000);
+        },
+        err => {
+          this.feedback = {type: 'warning', message: 'Error deleting.'};
+        }
+      );
+    }
   }
 }
+
 
 

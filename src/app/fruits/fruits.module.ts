@@ -6,6 +6,13 @@ import { HomeComponent } from './home/home.component';
 import { CreateComponent } from './create/create.component';
 import { FormsModule } from '@angular/forms';
 import { EditComponent } from './edit/edit.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { MatInputModule } from '@angular/material/input';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { MatNativeDateModule } from '@angular/material/core';
+import { MatIconModule } from '@angular/material/icon';
 
 
 @NgModule({
@@ -17,7 +24,14 @@ import { EditComponent } from './edit/edit.component';
   imports: [
     CommonModule,
     FruitsRoutingModule,
-    FormsModule
+    FormsModule,
+    MatButtonModule,
+    MatIconModule,
+    MatTableModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class FruitsModule { }
