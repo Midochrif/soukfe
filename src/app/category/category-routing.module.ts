@@ -6,21 +6,22 @@ import { EditComponent } from './edit/edit.component';
 
 const routes: Routes = [
   {
-    path: 'fruits/home',
+    path: 'category/home',
     component: HomeComponent,
   },
   {
-    path: 'fruits/create',
-    component: CreateComponent,
+    path:'category/create',
+    component: CreateComponent
   },
   {
-    path:'fruits/edit/:id',
+    path:'category/edit/:id',
     component: EditComponent
   }
+ 
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
   exports: [RouterModule]
 })
-export class FruitsRoutingModule { }
+export class CategoryRoutingModule { }

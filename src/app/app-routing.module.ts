@@ -7,6 +7,12 @@ export const routes: Routes = [
     redirectTo: 'fruits/home',
     pathMatch: 'full',
   },
+  {
+    path: 'category',
+    redirectTo: 'category/home',
+   
+  },
+  
 ];
 
 @NgModule({

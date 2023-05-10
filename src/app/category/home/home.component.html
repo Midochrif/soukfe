@@ -1,28 +1,25 @@
 <div class="container">
-  <div class="row mt-2">
-    <div class="col col-md-4 offset-md-4">
-      <a class="btn btn-primary" routerLink="/fruits/create">Create</a>
-    </div>
-  </div>
+    <div class="row mt-2">
+        <div class="col col-md-4 offset-md-4">
+          <a class="btn btn-primary" routerLink="/category/create">Create</a>
+        </div>
     <table class="table">
       <thead>
         <tr>
           <th scope="col">Id</th>
           <th scope="col">Name</th>
-          <th scope="col">Quantity</th>
-          <th scope="col">Price</th>
-          <th scope="col">category</th>
+          <th scope="col">Description</th>
+          
         </tr>
       </thead>
       <tbody>
-        <tr *ngFor="let item of allFruits">
+        <tr *ngFor="let item of allCategory">
+            
           <th scope="row">{{ item.id }}</th>
           <td>{{ item.name }}</td>
-          <td>{{ item.quantity }}</td>
-          <td>{{ item.price }}</td>
-          <td>{{ item.category.name }}</td>
+          <td>{{ item.description }}</td>
           <td>
-            <a class="btn btn-primary" [routerLink]="['/fruits/edit', item.id]">Edit</a> |
+            <a class="btn btn-primary" [routerLink]="['/category/edit', item.id]">Edit</a> |
             <button type="button" (click)="openDeleteModal(item.id)" class="btn btn-danger">Delete</button>
             </td>
         </tr>
