@@ -6,7 +6,13 @@ import { AppComponent } from './app.component';
 import { FruitsModule } from './fruits/fruits.module';
 import { HttpClientModule } from '@angular/common/http';
 import { CategoryModule } from './category/category.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatSidenavModule } from '@angular/material/sidenav';
+import { MatButtonModule } from '@angular/material/button';
+import { MatIconModule } from '@angular/material/icon';
+import { MatDividerModule } from '@angular/material/divider';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -18,7 +24,12 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     FruitsModule,
     HttpClientModule,
     CategoryModule,
-    BrowserAnimationsModule
+    MatToolbarModule,
+    MatSidenavModule,
+    MatButtonModule,
+    MatIconModule,
+    MatDividerModule,
+    MatFormFieldModule
     
   ],
   providers: [],
