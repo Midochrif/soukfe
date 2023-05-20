@@ -8,7 +8,11 @@ import { Category } from 'src/app/category/category';
 @Component({
   selector: 'app-create',
   templateUrl: './create.component.html',
-  
+  styles: [
+    // todo: figure out how to make width dynamic
+    'form { display: flex; flex-direction: column; min-width: 500px; }',
+    'form > * { width: 100% }'
+  ]
 })
 export class CreateComponent implements OnInit {
   allCategory: Category[] = [];
@@ -35,11 +39,12 @@ export class CreateComponent implements OnInit {
   }
   get() {
     this.categoryService.get().subscribe((data) => {
+      console.log("data=",data)
       this.allCategory = data;
     });
   }
  
-  create(){
+  save(){
     this.fruitService.create(this.fruitForm)
     .subscribe({
       next:(data) => {
@@ -49,5 +54,8 @@ export class CreateComponent implements OnInit {
         console.log(err);
       }
     })
+  }
+  cancel() {
+    this.router.navigate(['/fruits']);
   }
 }

@@ -4,10 +4,13 @@ import { Fruits } from '../fruits';
 import { FruitsService } from '../fruits.service';
 import { Category } from 'src/app/category/category';
 import { CategoryService } from 'src/app/category/category.service';
+declare var window: any;
 @Component({
   selector: 'app-edit',
   templateUrl: './edit.component.html',
-  styleUrls: ['./edit.component.css']
+  styles: [
+    'table { min-width: 600px }',
+  ]
 })
 export class EditComponent {
   allCategory: Category[] = [];
@@ -34,7 +37,7 @@ export class EditComponent {
 
   }
   get() {
-    this.categoryService.get().subscribe((data) => {
+    this.categoryService.get().subscribe((data:Category[]) => {
       this.allCategory = data;
     console.log(data);
     });
